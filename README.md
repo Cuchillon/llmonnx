@@ -12,9 +12,13 @@
 
 ![QWEN3_4B_STRUCTURE](docs/qwen3_4b_structure.png)
 
+Добавив туда [genai_config.json](docs/qwen3_genai_config.json) (переименовать образец)
+
 [SmolLM2-360M-ONNX](https://huggingface.co/onnx-community/SmolLM2-360M-ONNX/tree/main)
 
 ![SMOLLM2_360M_STRUCTURE](docs/smollm2_360m_structure.png)
+
+Добавив туда [genai_config.json](docs/smollm2_genai_config.json) (переименовать образец)
 
 Указать пути в `src/main/resources/application.yml` или прокинуть через переменные окружения
 
