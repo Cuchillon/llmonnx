@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: llm-onnx
+
+model:
+  metadata:
+    Qwen3-4B-Instruct-2507-ONNX:
+      path: ${QWEN3_4B_INSTRUCT_2507}
+    SmolLM2-360M-ONNX:
+      path: ${SMOLLM2_360M}
