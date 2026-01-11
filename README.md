@@ -36,11 +36,15 @@ java -jar build/libs/llmonnx-0.0.1-SNAPSHOT.jar
 
 ### Сделать запрос
 
+API является open AI-совместимым
+
+#### Non-streaming
+
 ```
-POST http://localhost:8080/api/v1/completion/stream
+POST http://localhost:8080/api/v1/chat/completions
 
 Headers:
-Accept: text/plain или text/event-stream
+Accept: application/json
 
 Body:
 {
@@ -52,8 +56,33 @@ Body:
     }
   ],
     "temperature": 0.3,
-    "topP": 0.9,
-    "repetitionPenalty": 1.2,
-    "maxTokens": 16
+    "top_p": 0.9,
+    "repetition_penalty": 1.2,
+    "max_tokens": 16
+}
+```
+
+#### Streaming
+
+```
+POST http://localhost:8080/api/v1/chat/completions
+
+Headers:
+Accept: text/event-stream
+
+Body:
+{
+  "model": "SmolLM2-360M-ONNX",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What color does the sun have?"
+    }
+  ],
+    "stream": true,
+    "temperature": 0.3,
+    "top_p": 0.9,
+    "repetition_penalty": 1.2,
+    "max_tokens": 16
 }
 ```

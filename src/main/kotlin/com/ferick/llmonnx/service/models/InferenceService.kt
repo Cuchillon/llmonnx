@@ -6,7 +6,7 @@ import ai.onnxruntime.genai.Model
 import ai.onnxruntime.genai.Tokenizer
 import com.ferick.llmonnx.common.extensions.setOptionsFrom
 import com.ferick.llmonnx.configuration.properties.ModelProperties
-import com.ferick.llmonnx.model.CompletionRequest
+import com.ferick.llmonnx.model.dto.ChatCompletionRequest
 import com.ferick.llmonnx.model.LLM
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -21,11 +21,11 @@ sealed class InferenceService : DisposableBean {
 
     fun supports(model: String) = model == llm.modelName
 
-    protected abstract fun formatPrompt(tokenizer: Tokenizer, request: CompletionRequest): String
+    protected abstract fun formatPrompt(tokenizer: Tokenizer, request: ChatCompletionRequest): String
     protected abstract fun isSpecial(token: String, tokenId: Int): Boolean
 
     open suspend fun generateStream(
-        request: CompletionRequest
+        request: ChatCompletionRequest
     ): Flow<String> = flow {
         Tokenizer(model).use { tokenizer ->
             val prompt = formatPrompt(tokenizer, request)

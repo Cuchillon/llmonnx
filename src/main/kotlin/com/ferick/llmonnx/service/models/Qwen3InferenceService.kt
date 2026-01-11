@@ -3,7 +3,7 @@ package com.ferick.llmonnx.service.models
 import ai.onnxruntime.genai.Tokenizer
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ferick.llmonnx.configuration.properties.ModelProperties
-import com.ferick.llmonnx.model.CompletionRequest
+import com.ferick.llmonnx.model.dto.ChatCompletionRequest
 import com.ferick.llmonnx.model.LLM
 import org.springframework.stereotype.Service
 
@@ -17,7 +17,7 @@ class Qwen3InferenceService(
         loadModel()
     }
 
-    override fun formatPrompt(tokenizer: Tokenizer, request: CompletionRequest): String =
+    override fun formatPrompt(tokenizer: Tokenizer, request: ChatCompletionRequest): String =
         tokenizer.applyChatTemplate(
             null,
             objectMapper.writeValueAsString(request.messages),

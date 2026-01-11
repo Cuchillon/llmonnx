@@ -1,4 +1,4 @@
-package com.ferick.llmonnx.model
+package com.ferick.llmonnx.model.dto
 
 data class Message(
     val role: String,

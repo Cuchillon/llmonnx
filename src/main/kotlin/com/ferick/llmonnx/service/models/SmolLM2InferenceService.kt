@@ -2,7 +2,7 @@ package com.ferick.llmonnx.service.models
 
 import ai.onnxruntime.genai.Tokenizer
 import com.ferick.llmonnx.configuration.properties.ModelProperties
-import com.ferick.llmonnx.model.CompletionRequest
+import com.ferick.llmonnx.model.dto.ChatCompletionRequest
 import com.ferick.llmonnx.model.LLM
 import org.springframework.stereotype.Service
 
@@ -15,7 +15,7 @@ class SmolLM2InferenceService(
         loadModel()
     }
 
-    override fun formatPrompt(tokenizer: Tokenizer, request: CompletionRequest): String {
+    override fun formatPrompt(tokenizer: Tokenizer, request: ChatCompletionRequest): String {
         val builder = StringBuilder()
         for (message in request.messages) {
             when (message.role) {

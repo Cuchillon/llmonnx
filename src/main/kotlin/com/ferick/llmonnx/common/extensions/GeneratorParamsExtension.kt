@@ -1,14 +1,14 @@
 package com.ferick.llmonnx.common.extensions
 
 import ai.onnxruntime.genai.GeneratorParams
-import com.ferick.llmonnx.model.CompletionRequest
+import com.ferick.llmonnx.model.dto.ChatCompletionRequest
 
 private const val DEFAULT_TEMPERATURE = 0.7
 private const val DEFAULT_TOP_P = 0.9
 private const val DEFAULT_REPETITION_PENALTY = 1.05
 private const val DEFAULT_MAX_TOKENS = 1024.0
 
-fun GeneratorParams.setOptionsFrom(request: CompletionRequest) {
+fun GeneratorParams.setOptionsFrom(request: ChatCompletionRequest) {
     this.apply {
         setSearchOption("do_sample", true)
         setSearchOption("temperature", request.temperature?.toDouble() ?: DEFAULT_TEMPERATURE)
